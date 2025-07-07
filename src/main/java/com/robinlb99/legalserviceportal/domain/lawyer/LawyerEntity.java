@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import com.robinlb99.legalserviceportal.domain.user.UserEntity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -40,6 +39,8 @@ public class LawyerEntity implements Serializable {
     @JoinColumn(name = "id_lawyer", referencedColumnName = "id_user")
     private UserEntity user;
 
+    @ToString.Include
+    @EqualsAndHashCode.Include
     @Column(name = "licence", nullable = false, unique = true, length = 50)
     private String licence;
 

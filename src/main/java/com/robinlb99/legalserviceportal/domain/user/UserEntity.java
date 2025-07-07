@@ -44,6 +44,7 @@ public class UserEntity {
     @Column(name = "surnames", nullable = false, length = 50)
     private String surnames;
 
+    @EqualsAndHashCode.Include
     @Nonnull
     @Column(name = "id_number", nullable = false, unique = true, length = 20)
     private String idNumber;

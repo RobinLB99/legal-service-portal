@@ -41,6 +41,8 @@ public class LegalCaseEntity implements Serializable {
     @Column(name = "id_case")
     private Long id;
 
+    @ToString.Include
+    @EqualsAndHashCode.Include
     @Column(name = "case_number", nullable = false, unique = true, length = 50)
     private String caseNumber;
 

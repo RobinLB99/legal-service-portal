@@ -41,6 +41,7 @@ public class CredentialEntity implements Serializable {
     private Long id;
 
     @ToString.Include
+    @EqualsAndHashCode.Include
     @Nonnull
     @Column(name = "username", nullable = false, unique = true, length = 100)
     private String username;
@@ -54,13 +55,11 @@ public class CredentialEntity implements Serializable {
     @JdbcTypeCode(SqlTypes.JSON)
     private JsonNode authorities;
 
-    // @EqualsAndHashCode.Include
     @ToString.Include
     @Nonnull
     @Column(name = "is_active", nullable = false)
     private boolean isActive = true;
 
-    // @EqualsAndHashCode.Exclude
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user", referencedColumnName = "id_user", nullable = false, unique = true)
     private UserEntity user;
