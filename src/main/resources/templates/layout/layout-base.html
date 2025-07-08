@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html
+    lang="es"
+    data-pc-preset="preset-1"
+    data-pc-sidebar-caption="true"
+    data-pc-direction="ltr"
+    dir="ltr"
+    data-pc-theme="light"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+    <!-- [Head] start -->
+    <head th:replace="fragments/common/static :: header"></head>
+    <!-- [Head] end -->
+    <!-- [Body] Start -->
+
+    <body>
+        <!-- [ Pre-loader ] start -->
+        <div
+            class="loader-bg fixed inset-0 bg-white dark:bg-themedark-cardbg z-[1034]"
+        >
+            <div
+                class="loader-track h-[5px] w-full inline-block absolute overflow-hidden top-0"
+            >
+                <div
+                    class="loader-fill w-[300px] h-[5px] bg-primary-500 absolute top-0 left-0 animate-[hitZak_0.6s_ease-in-out_infinite_alternate]"
+                ></div>
+            </div>
+        </div>
+        <!-- [ Pre-loader ] End -->
+        <!-- [ Sidebar Menu ] start -->
+        <nav th:replace="fragments/common/sidebar"></nav>
+        <!-- [ Sidebar Menu ] end -->
+        <!-- [ Header Topbar ] start -->
+        <header th:replace="fragments/common/header"></header>
+        <!-- [ Header ] end -->
+
+        <!-- [ Main Content ] start -->
+        <div class="pc-container">
+            <div class="pc-content">
+                <!-- [ breadcrumb ] start -->
+                <div th:replace="fragments/common/page-header"></div>
+                <!-- [ breadcrumb ] end -->
+
+                <!-- [ Main Content ] start -->
+
+                <div
+                    layout:fragment="content"
+                    class="grid grid-cols-12 gap-x-6"
+                >
+                    ...
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+        <div th:replace="fragments/common/footer"></div>
+        <!-- Required Js -->
+        <div th:replace="fragments/common/static :: javascript"></div>
+        <div
+            class="floting-button fixed bottom-[50px] right-[30px] z-[1030]"
+        ></div>
+
+        <script>
+            layout_change("false");
+        </script>
+
+        <script>
+            layout_theme_sidebar_change("dark");
+        </script>
+
+        <script>
+            change_box_container("false");
+        </script>
+
+        <script>
+            layout_caption_change("true");
+        </script>
+
+        <script>
+            layout_rtl_change("false");
+        </script>
+
+        <script>
+            preset_change("preset-1");
+        </script>
+
+        <script>
+            main_layout_change("vertical");
+        </script>
+    </body>
+    <!-- [Body] end -->
+</html>

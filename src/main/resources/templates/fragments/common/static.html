@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <head th:fragment="header">
+            <title>Sample Page | Datta Able Dashboard Template</title>
+            <!-- [Meta] -->
+            <meta charset="utf-8" />
+            <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"
+            />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="author" content="CodedThemes" />
+
+            <!-- [Favicon] icon -->
+            <link rel="icon" href="images/favicon.svg" type="image/x-icon" />
+            <!-- [Font] Family -->
+            <link
+                href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap"
+                rel="stylesheet"
+            />
+            <!-- [phosphor Icons] https://phosphoricons.com/ -->
+            <link rel="stylesheet" href="fonts/phosphor/duotone/style.css" />
+            <!-- [Tabler Icons] https://tablericons.com -->
+            <link rel="stylesheet" href="fonts/tabler-icons.min.css" />
+            <!-- [Feather Icons] https://feathericons.com -->
+            <link rel="stylesheet" href="fonts/feather.css" />
+            <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+            <link rel="stylesheet" href="fonts/fontawesome.css" />
+            <!-- [Material Icons] https://fonts.google.com/icons -->
+            <link rel="stylesheet" href="fonts/material.css" />
+            <!-- [Template CSS Files] -->
+            <link rel="stylesheet" href="css/style.css" id="main-style-link" />
+        </head>
+    </head>
+    <body>
+        <div th:fragment="javascript">
+            <script src="js/plugins/simplebar.min.js"></script>
+            <script src="js/plugins/popper.min.js"></script>
+            <script src="js/icon/custom-icon.js"></script>
+            <script src="js/plugins/feather.min.js"></script>
+            <script src="js/component.js"></script>
+            <script src="js/theme.js"></script>
+            <script src="js/script.js"></script>
+        </div>
+    </body>
+</html>
