@@ -2,10 +2,6 @@ package com.robinlb99.legalserviceportal.domain.credential;
 
 import java.io.Serializable;
 
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
-
-import com.fasterxml.jackson.databind.JsonNode;
 import com.robinlb99.legalserviceportal.domain.user.UserEntity;
 
 import jakarta.annotation.Nonnull;
@@ -23,6 +19,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @NoArgsConstructor
 @Getter
@@ -53,7 +51,7 @@ public class CredentialEntity implements Serializable {
     @Nonnull
     @Column(name = "authorities", nullable = false, columnDefinition = "jsonb")
     @JdbcTypeCode(SqlTypes.JSON)
-    private JsonNode authorities;
+    private AuthoritiesDTO authorities;
 
     @ToString.Include
     @Nonnull

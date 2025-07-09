@@ -10,10 +10,10 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
     <!-- [Head] start -->
-    <head th:replace="fragments/common/static :: header"></head>
+    <head th:replace="fragments/common/static :: head"></head>
     <!-- [Head] end -->
-    <!-- [Body] Start -->
 
+    <!-- [Body] Start -->
     <body>
         <!-- [ Pre-loader ] start -->
         <div
@@ -28,9 +28,11 @@
             </div>
         </div>
         <!-- [ Pre-loader ] End -->
+
         <!-- [ Sidebar Menu ] start -->
         <nav th:replace="fragments/common/sidebar"></nav>
         <!-- [ Sidebar Menu ] end -->
+
         <!-- [ Header Topbar ] start -->
         <header th:replace="fragments/common/header"></header>
         <!-- [ Header ] end -->
@@ -54,7 +56,9 @@
             </div>
         </div>
         <!-- [ Main Content ] end -->
+
         <div th:replace="fragments/common/footer"></div>
+        
         <!-- Required Js -->
         <div th:replace="fragments/common/static :: javascript"></div>
         <div
@@ -88,6 +92,7 @@
         <script>
             main_layout_change("vertical");
         </script>
+        <script src="http://localhost:35729/livereload.js"></script>
     </body>
     <!-- [Body] end -->
 </html>

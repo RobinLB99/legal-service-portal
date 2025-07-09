@@ -120,10 +120,14 @@
                             <i class="ti ti-lock"></i>
                             <span>Lock Screen</span>
                         </a>
-                        <a href="#!" class="dropdown-item">
-                            <i class="ti ti-power"></i>
-                            <span>Logout</span>
-                        </a>
+                        <div>
+                            <form method="post" th:action="@{/logout}">
+                                <button class="dropdown-item" type="submit">
+                                    <i class="ti ti-power"></i>
+                                    <span>Cerrar Sesión</span>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </li>
                 <li class="dropdown pc-h-item">
@@ -193,7 +197,7 @@
                                         <div class="shrink-0">
                                             <img
                                                 class="img-radius w-12 h-12 rounded-0"
-                                                src="images/user/avatar-2.jpg"
+                                                th:src=@{assets/images/user/avatar-2.jpg}
                                                 alt="Generic placeholder image"
                                             />
                                         </div>
@@ -251,7 +255,7 @@
                                         <div class="shrink-0">
                                             <img
                                                 class="img-radius w-12 h-12 rounded-0"
-                                                src="images/user/avatar-4.jpg"
+                                                th:src=@{assets/images/user/avatar-4.jpg}
                                                 alt="Generic placeholder image"
                                             />
                                         </div>
@@ -287,7 +291,7 @@
                                         <div class="shrink-0">
                                             <img
                                                 class="img-radius w-12 h-12 rounded-0"
-                                                src="images/user/avatar-5.jpg"
+                                                th:src=@{assets/images/user/avatar-5.jpg}
                                                 alt="Generic placeholder image"
                                             />
                                         </div>
@@ -343,7 +347,7 @@
                             <div class="flex mb-1 items-center">
                                 <div class="shrink-0">
                                     <img
-                                        src="images/user/avatar-2.jpg"
+                                        th:src=@{assets/images/user/avatar-2.jpg}
                                         alt="user-image"
                                         class="w-10 rounded-full"
                                     />
@@ -399,8 +403,9 @@
                                         <span>Change Password</span>
                                     </span>
                                 </a>
-                                <div class="grid my-3">
+                                <form method="post" th:action=@{/logout} class="grid my-3">
                                     <button
+                                        type="submit"
                                         class="btn btn-primary flex items-center justify-center"
                                     >
                                         <svg
@@ -410,7 +415,7 @@
                                                 xlink:href="#custom-logout-1-outline"
                                             ></use>
                                         </svg>
-                                        Logout
+                                        Cerrar sesión
                                     </button>
                                 </div>
                             </div>

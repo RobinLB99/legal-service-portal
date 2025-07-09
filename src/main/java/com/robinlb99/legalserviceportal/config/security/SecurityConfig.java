@@ -1,5 +1,6 @@
 package com.robinlb99.legalserviceportal.config.security;
 
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,11 +12,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Clase de configuración de seguridad para la aplicación.
- * Esta clase habilita la seguridad web y configura la cadena de filtros de seguridad,
+ * Esta clase habilita la seguridad web y configura la cadena de filtros de
+ * seguridad,
  * el codificador de contraseñas y el proveedor de autenticación.
  */
+@Slf4j
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -34,27 +39,27 @@ public class SecurityConfig {
      * @throws Exception si ocurre un error
      */
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        log.info("Configurando la cadena de filtros de seguridad.");
         return http
-                .authenticationProvider(null)
+                .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("").permitAll()
-                        .requestMatchers("null").anonymous()
+                        .requestMatchers("/assets/**", "/fonts/**", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/login").anonymous()
                         .anyRequest().authenticated())
                 .formLogin(login -> login
-                    .loginPage("/login")
-                    .loginProcessingUrl("login")
-                    .usernameParameter("username")
-                    .passwordParameter("password")
-                    .defaultSuccessUrl("/app")
-                    .failureUrl("/login?error")
-                    .permitAll())
+                        .loginPage("/login")
+                        .loginProcessingUrl("/perform_login")
+                        .usernameParameter("username")
+                        .passwordParameter("password")
+                        .defaultSuccessUrl("/", true)
+                        .failureUrl("/login?error"))
                 .logout(logout -> logout
-                    .logoutUrl("/logout")
-                    .logoutSuccessUrl("/login?logout")
-                    .invalidateHttpSession(true)
-                    .deleteCookies("JSESSIONID")
-                    .permitAll())
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login?logout")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
+                        .permitAll())
                 .build();
     }
 
@@ -64,18 +69,21 @@ public class SecurityConfig {
      * @return el codificador de contraseñas
      */
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    PasswordEncoder passwordEncoder() {
+        log.info("Creando bean PasswordEncoder.");
         return new BCryptPasswordEncoder();
     }
 
     /**
      * Crea un bean {@link DaoAuthenticationProvider}.
-     * Este proveedor es responsable de autenticar a los usuarios contra la base de datos.
+     * Este proveedor es responsable de autenticar a los usuarios contra la base de
+     * datos.
      *
      * @return el proveedor de autenticación
      */
     @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
+    DaoAuthenticationProvider authenticationProvider() {
+        log.info("Creando bean DaoAuthenticationProvider.");
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(customUserDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
@@ -90,7 +98,8 @@ public class SecurityConfig {
      * @throws Exception si ocurre un error
      */
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+    AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        log.info("Exponiendo AuthenticationManager como bean.");
         return config.getAuthenticationManager();
     }
 

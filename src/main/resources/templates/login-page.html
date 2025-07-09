@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html
+    lang="es"
+    data-pc-preset="preset-1"
+    data-pc-sidebar-caption="true"
+    data-pc-direction="ltr"
+    dir="ltr"
+    data-pc-theme="light"
+    xmlns:th="http://www.thymeleaf.org"
+>
+    <!-- [Head] start -->
+    <div th:replace="~{fragments/common/static :: head}"></div>
+    <!-- [Head] end -->
+
+    <!-- [Body] Start -->
+    <body>
+        <!-- [ Pre-loader ] start -->
+        <div
+            class="loader-bg fixed inset-0 bg-white dark:bg-themedark-cardbg z-[1034]"
+        >
+            <div
+                class="loader-track h-[5px] w-full inline-block absolute overflow-hidden top-0"
+            >
+                <div
+                    class="loader-fill w-[300px] h-[5px] bg-primary-500 absolute top-0 left-0 animate-[hitZak_0.6s_ease-in-out_infinite_alternate]"
+                ></div>
+            </div>
+        </div>
+        <!-- [ Pre-loader ] End -->
+
+        <!-- [ Main Content ] end -->
+        <div class="auth-main relative">
+            <div
+                class="auth-wrapper v1 flex items-center w-full h-full min-h-screen"
+            >
+                <div
+                    class="auth-form flex items-center justify-center grow flex-col min-h-screen relative p-6"
+                >
+                    <div class="w-full max-w-[450px] relative">
+                        <!-- <div class="auth-bg">
+                            <span
+                                class="absolute top-[-100px] right-[-100px] w-[300px] h-[300px] block rounded-full bg-theme-bg-1 animate-[floating_7s_infinite]"
+                            ></span>
+                            <span
+                                class="absolute top-[150px] right-[-150px] w-5 h-5 block rounded-full bg-primary-500 animate-[floating_9s_infinite]"
+                            ></span>
+                            <span
+                                class="absolute left-[-150px] bottom-[150px] w-5 h-5 block rounded-full bg-theme-bg-1 animate-[floating_7s_infinite]"
+                            ></span>
+                            <span
+                                class="absolute left-[-100px] bottom-[-100px] w-[300px] h-[300px] block rounded-full bg-theme-bg-2 animate-[floating_9s_infinite]"
+                            ></span>
+                        </div> -->
+                        <div class="card sm:my-12 w-full shadow-2xl">
+                            <div class="card-body !p-10">
+                                <div class="text-center mb-8">
+                                    <a href="#">
+                                        <img
+                                            src="assets/images/logo-dark.svg"
+                                            alt="img"
+                                            class="mx-auto auth-logo"
+                                        />
+                                    </a>
+                                    <div
+                                        th:if="${param.error}"
+                                        class="alert alert-danger mt-3"
+                                        role="alert"
+                                    >
+                                        <span th:text="${errorMessage}"></span>
+                                    </div>
+                                    <div
+                                        th:if="${param.logout}"
+                                        class="alert alert-success mt-3"
+                                        role="alert"
+                                    >
+                                        <span th:text="${logoutMessage}"></span>
+                                    </div>
+                                </div>
+                                <form
+                                    th:action="@{/perform_login}"
+                                    method="post"
+                                >
+                                    <h4 class="text-center font-medium mb-4">
+                                        Iniciar Sesión
+                                    </h4>
+                                    <div class="mb-3">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            name="username"
+                                            id="floatingInput"
+                                            placeholder="Nombre de usuario"
+                                        />
+                                    </div>
+                                    <div class="mb-4">
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            name="password"
+                                            id="floatingInput1"
+                                            placeholder="Contraseña"
+                                        />
+                                    </div>
+                                    <div
+                                        class="flex mt-1 justify-between items-center flex-wrap"
+                                    >
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input input-primary"
+                                                type="checkbox"
+                                                id="showPasswordCheck"
+                                            />
+                                            <label
+                                                class="form-check-label text-muted unselectable"
+                                                for="showPasswordCheck"
+                                                >Mostrar contraseña</label
+                                            >
+                                        </div>
+                                        <h6
+                                            class="font-normal text-primary-500 mb-0"
+                                        >
+                                            <a href="#">
+                                                ¿Olvidaste tu contraseña?
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <div
+                                        class="flex justify-between items-center flex-wrap mt-3"
+                                    >
+                                        <div class="form-check">
+                                            <input
+                                                class="form-check-input input-primary"
+                                                type="checkbox"
+                                                id="remembermeCheck"
+                                            />
+                                            <label
+                                                class="form-check-label text-muted unselectable"
+                                                for="remembermeCheck"
+                                                >Recuérdeme</label
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 text-center">
+                                        <button
+                                            type="submit"
+                                            class="btn btn-primary mx-auto shadow-2xl"
+                                        >
+                                            Iniciar Sesión
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="flex justify-between items-end flex-wrap mt-4"
+                                    >
+                                        <h6 class="font-medium mb-0">
+                                            ¿No tienes una cuenta?
+                                        </h6>
+                                        <a
+                                            href="register-v1.html"
+                                            class="text-primary-500"
+                                            >Crea una cuenta</a
+                                        >
+                                    </div>
+                                    <input
+                                        type="hidden"
+                                        th:name="${_csrf.parameterName}"
+                                        th:value="${_csrf.token}"
+                                    />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+
+        <!-- Required Js -->
+        <script>
+            const passwordInput = document.getElementById("floatingInput1");
+            const showPassCheck = document.getElementById("showPasswordCheck");
+            showPassCheck.addEventListener("change", (event) => {
+                if (showPassCheck.checked === true) passwordInput.type = "text";
+                else passwordInput.type = "password";
+            });
+        </script>
+        <div th:replace="~{fragments/common/static :: javascript}"></div>
+        <script src="http://localhost:35729/livereload.js"></script>
+    </body>
+    <!-- [Body] end -->
+</html>
