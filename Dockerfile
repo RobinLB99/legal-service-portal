@@ -1,16 +1,15 @@
-FROM maven:3.9.10-eclipse-temurin-21-alpine AS builder
+# Dockerfile para ENTORNO DE DESARROLLO (Versión Robusta)
 
+# Usar una imagen base que contenga Maven y JDK 21.
+FROM maven:3.9.10-eclipse-temurin-21-alpine
+
+# Establecer el directorio de trabajo.
 WORKDIR /app
 
-# Copia el pom.xml y descarga las dependencias para cachearlas
-COPY pom.xml .
-RUN mvn dependency:go-offline -B
+# Exponer los puertos necesarios.
+EXPOSE 8080
+EXPOSE 35729
 
-# Copia el resto del código fuente
-COPY src ./src
-
-# Expone el puerto de depuración
-EXPOSE 5005
-
-# Comando por defecto para ejecutar la aplicación en modo de desarrollo
-CMD mvn spring-boot:run -Dspring-boot.run.profiles=dev
+# El comando por defecto se definirá en docker-compose, pero establecemos
+# uno por defecto como buena práctica.
+CMD ["./mvnw", "spring-boot:run"]

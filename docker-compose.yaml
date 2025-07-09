@@ -9,7 +9,6 @@ services:
     networks:
       - app-network
     healthcheck:
-      # Use CMD form for better parsing and reliability
       test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-d", "${POSTGRES_DB}"]
       interval: 5s
       timeout: 5s
@@ -20,18 +19,17 @@ services:
       context: .
       dockerfile: Dockerfile
     env_file: .env
-    # It's better to let Compose name the container to avoid conflicts
     ports:
       - "8080:8080"
-      - "5005:5005"
+      - "35729:35729" # Puerto para LiveReload
     volumes:
-      - ./src:/app/src
+      # Monta el directorio completo del proyecto. Maven ahora ve todos los archivos.
+      - .:/app
+      # Cachea el repositorio de Maven para no descargar dependencias en cada inicio.
       - maven-repo:/root/.m2
     depends_on:
       postgres:
         condition: service_healthy
-    environment:
-      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
     networks:
       - app-network
 
@@ -40,4 +38,5 @@ networks:
 
 volumes:
   postgres-data:
+  # Volumen para persistir el repositorio de Maven.
   maven-repo:
