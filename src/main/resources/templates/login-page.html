@@ -73,7 +73,9 @@
                                         class="alert alert-danger mt-3"
                                         role="alert"
                                     >
-                                        <span th:text="${badCredentialsMessage}"></span>
+                                        <span
+                                            th:text="${badCredentialsMessage}"
+                                        ></span>
                                     </div>
                                     <div
                                         th:if="${param.logout}"
@@ -97,6 +99,7 @@
                                             name="username"
                                             id="floatingInput"
                                             placeholder="Nombre de usuario"
+                                            required
                                         />
                                     </div>
                                     <div class="mb-4">
@@ -106,6 +109,7 @@
                                             name="password"
                                             id="floatingInput1"
                                             placeholder="Contraseña"
+                                            required
                                         />
                                     </div>
                                     <div
