@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.robinlb99.legalserviceportal.domain.credential.CredentialEntity;
 import com.robinlb99.legalserviceportal.domain.credential.CredentialRepository;
-import com.robinlb99.legalserviceportal.domain.credential.Permission;
+import com.robinlb99.legalserviceportal.domain.credential.enums.Permission;
 
 import lombok.extern.slf4j.Slf4j;
 

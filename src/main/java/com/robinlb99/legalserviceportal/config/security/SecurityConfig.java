@@ -24,10 +24,15 @@ import lombok.extern.slf4j.Slf4j;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private CustomUserDetailsService customUserDetailsService;
+    private final CustomUserDetailsService customUserDetailsService;
+    private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+    private final CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
-    public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
+    public SecurityConfig(CustomUserDetailsService customUserDetailsService,
+            CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler, CustomAuthenticationFailureHandler customAuthenticationFailureHandler) {
         this.customUserDetailsService = customUserDetailsService;
+        this.customAuthenticationSuccessHandler = customAuthenticationSuccessHandler;
+        this.customAuthenticationFailureHandler = customAuthenticationFailureHandler;
     }
 
     /**
@@ -51,8 +56,8 @@ public class SecurityConfig {
                         .loginProcessingUrl("/perform_login")
                         .usernameParameter("username")
                         .passwordParameter("password")
-                        .defaultSuccessUrl("/", true)
-                        .failureHandler(new CustomAuthenticationFailureHandler()))
+                        .successHandler(customAuthenticationSuccessHandler)
+                        .failureHandler(customAuthenticationFailureHandler))
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
@@ -69,7 +74,7 @@ public class SecurityConfig {
      */
     @Bean
     PasswordEncoder passwordEncoder() {
-        log.info("Creando bean PasswordEncoder.");
+        // log.info("Creando bean PasswordEncoder.");
         return new BCryptPasswordEncoder();
     }
 
@@ -82,7 +87,7 @@ public class SecurityConfig {
      */
     @Bean
     DaoAuthenticationProvider authenticationProvider() {
-        log.info("Creando bean DaoAuthenticationProvider.");
+        // log.info("Creando bean DaoAuthenticationProvider.");
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(customUserDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
@@ -98,7 +103,7 @@ public class SecurityConfig {
      */
     @Bean
     AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-        log.info("Exponiendo AuthenticationManager como bean.");
+        // log.info("Exponiendo AuthenticationManager como bean.");
         return config.getAuthenticationManager();
     }
 

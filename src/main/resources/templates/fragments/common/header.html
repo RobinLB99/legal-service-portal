@@ -197,7 +197,7 @@
                                         <div class="shrink-0">
                                             <img
                                                 class="img-radius w-12 h-12 rounded-0"
-                                                th:src=@{assets/images/user/avatar-2.jpg}
+                                                th:src="@{/assets/images/user/avatar-2.jpg}"
                                                 alt="Generic placeholder image"
                                             />
                                         </div>
@@ -255,7 +255,7 @@
                                         <div class="shrink-0">
                                             <img
                                                 class="img-radius w-12 h-12 rounded-0"
-                                                th:src=@{assets/images/user/avatar-4.jpg}
+                                                th:src="@{/assets/images/user/avatar-4.jpg}"
                                                 alt="Generic placeholder image"
                                             />
                                         </div>
@@ -291,7 +291,7 @@
                                         <div class="shrink-0">
                                             <img
                                                 class="img-radius w-12 h-12 rounded-0"
-                                                th:src=@{assets/images/user/avatar-5.jpg}
+                                                th:src="@{/assets/images/user/avatar-5.jpg}"
                                                 alt="Generic placeholder image"
                                             />
                                         </div>
@@ -347,18 +347,20 @@
                             <div class="flex mb-1 items-center">
                                 <div class="shrink-0">
                                     <img
-                                        th:src=@{assets/images/user/avatar-2.jpg}
+                                        th:src="@{/assets/images/user/avatar-2.jpg}"
                                         alt="user-image"
                                         class="w-10 rounded-full"
                                     />
                                 </div>
                                 <div class="grow ms-3">
-                                    <h6 class="mb-1 text-white">
-                                        Carson Darrin 🖖
-                                    </h6>
-                                    <span class="text-white"
-                                        >carson.darrin@company.io</span
-                                    >
+                                    <span
+                                        class="text-white"
+                                        th:text="${currentProfile.credentials.username}"
+                                    ></span>
+                                    <h6
+                                        class="mb-1 text-white"
+                                        th:text="${currentProfile.userData.firstName + ' ' + currentProfile.userData.surnames}"
+                                    ></h6>
                                 </div>
                             </div>
                         </div>
@@ -403,7 +405,11 @@
                                         <span>Change Password</span>
                                     </span>
                                 </a>
-                                <form method="post" th:action=@{/logout} class="grid my-3">
+                                <form
+                                    method="post"
+                                    th:action="@{/logout}"
+                                    class="grid my-3"
+                                >
                                     <button
                                         type="submit"
                                         class="btn btn-primary flex items-center justify-center"
@@ -417,7 +423,7 @@
                                         </svg>
                                         Cerrar sesión
                                     </button>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
