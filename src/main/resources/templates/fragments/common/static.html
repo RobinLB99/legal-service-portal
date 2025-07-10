@@ -15,27 +15,27 @@
             rel="stylesheet"
         />
         <!-- [phosphor Icons] https://phosphoricons.com/ -->
-        <link rel="stylesheet" href="fonts/phosphor/duotone/style.css" />
+        <link rel="stylesheet" th:href=@{fonts/phosphor/duotone/style.css} />
         <!-- [Tabler Icons] https://tablericons.com -->
-        <link rel="stylesheet" href="fonts/tabler-icons.min.css" />
+        <link rel="stylesheet" th:href=@{fonts/tabler-icons.min.css} />
         <!-- [Feather Icons] https://feathericons.com -->
-        <link rel="stylesheet" href="fonts/feather.css" />
+        <link rel="stylesheet" th:href=@{fonts/feather.css} />
         <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-        <link rel="stylesheet" href="fonts/fontawesome.css" />
+        <link rel="stylesheet" th:href=@{fonts/fontawesome.css} />
         <!-- [Material Icons] https://fonts.google.com/icons -->
-        <link rel="stylesheet" href="fonts/material.css" />
+        <link rel="stylesheet" th:href=@{fonts/material.css} />
         <!-- [Template CSS Files] -->
-        <link rel="stylesheet" href="css/style.css" id="main-style-link" />
+        <link rel="stylesheet" th:href=@{css/style.css} id="main-style-link" />
     </head>
     <body>
         <div th:fragment="javascript">
-            <script src="js/plugins/simplebar.min.js"></script>
-            <script src="js/plugins/popper.min.js"></script>
-            <script src="js/icon/custom-icon.js"></script>
-            <script src="js/plugins/feather.min.js"></script>
-            <script src="js/component.js"></script>
-            <script src="js/theme.js"></script>
-            <script src="js/script.js"></script>
+            <script th:src=@{js/plugins/simplebar.min.js}></script>
+            <script th:src=@{js/plugins/popper.min.js}></script>
+            <script th:src=@{js/icon/custom-icon.js}></script>
+            <script th:src=@{js/plugins/feather.min.js}></script>
+            <script th:src=@{js/component.js}></script>
+            <script th:src=@{js/theme.js}></script>
+            <script th:src=@{js/script.js}></script>
             <div
                 class="floting-button fixed bottom-[50px] right-[30px] z-[1030]"
             ></div>
