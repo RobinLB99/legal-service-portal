@@ -2,6 +2,7 @@ package com.robinlb99.legalserviceportal.domain.credential;
 
 import java.io.Serializable;
 
+import com.robinlb99.legalserviceportal.domain.credential.dto.AuthoritiesDTO;
 import com.robinlb99.legalserviceportal.domain.user.UserEntity;
 
 import jakarta.annotation.Nonnull;

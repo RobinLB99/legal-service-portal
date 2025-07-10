@@ -1,6 +1,9 @@
-package com.robinlb99.legalserviceportal.domain.credential;
+package com.robinlb99.legalserviceportal.domain.credential.dto;
 
 import java.util.List;
+
+import com.robinlb99.legalserviceportal.domain.credential.enums.Permission;
+import com.robinlb99.legalserviceportal.domain.credential.enums.Role;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.EnumType;

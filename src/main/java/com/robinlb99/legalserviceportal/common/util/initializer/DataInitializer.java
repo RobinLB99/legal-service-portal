@@ -1,10 +1,10 @@
 package com.robinlb99.legalserviceportal.common.util.initializer;
 
-import com.robinlb99.legalserviceportal.domain.credential.AuthoritiesDTO;
 import com.robinlb99.legalserviceportal.domain.credential.CredentialEntity;
 import com.robinlb99.legalserviceportal.domain.credential.CredentialRepository;
-import com.robinlb99.legalserviceportal.domain.credential.Permission;
-import com.robinlb99.legalserviceportal.domain.credential.Role;
+import com.robinlb99.legalserviceportal.domain.credential.dto.AuthoritiesDTO;
+import com.robinlb99.legalserviceportal.domain.credential.enums.Permission;
+import com.robinlb99.legalserviceportal.domain.credential.enums.Role;
 import com.robinlb99.legalserviceportal.domain.lawyer.LawyerEntity;
 import com.robinlb99.legalserviceportal.domain.lawyer.LawyerRepository;
 import com.robinlb99.legalserviceportal.domain.user.UserEntity;
