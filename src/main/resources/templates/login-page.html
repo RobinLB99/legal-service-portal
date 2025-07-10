@@ -69,6 +69,13 @@
                                         <span th:text="${errorMessage}"></span>
                                     </div>
                                     <div
+                                        th:if="${param.badCredentials}"
+                                        class="alert alert-danger mt-3"
+                                        role="alert"
+                                    >
+                                        <span th:text="${badCredentialsMessage}"></span>
+                                    </div>
+                                    <div
                                         th:if="${param.logout}"
                                         class="alert alert-success mt-3"
                                         role="alert"
@@ -132,6 +139,7 @@
                                                 class="form-check-input input-primary"
                                                 type="checkbox"
                                                 id="remembermeCheck"
+                                                disabled
                                             />
                                             <label
                                                 class="form-check-label text-muted unselectable"
@@ -182,6 +190,8 @@
                 if (showPassCheck.checked === true) passwordInput.type = "text";
                 else passwordInput.type = "password";
             });
+
+            document.querySelector("#floatingInput").focus();
         </script>
         <div th:replace="~{fragments/common/static :: javascript}"></div>
         <script src="http://localhost:35729/livereload.js"></script>

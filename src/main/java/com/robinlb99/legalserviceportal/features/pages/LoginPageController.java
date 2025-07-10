@@ -91,26 +91,32 @@ public class LoginPageController {
     @GetMapping("/login")
     public String goToLogin(
             @RequestParam(name = "error", required = false) String error,
+            @RequestParam(name = "badCredentials", required = false) String badCredentials,
             @RequestParam(name = "logout", required = false) String logout,
             Model model,
             Authentication authentication) {
         model.addAttribute("titlePage", "Login");
 
-        log.info("Acceso a la ruta '/login'");
+        // log.info("Acceso a la ruta '/login'");
         if (isUserAuthenticated(authentication)) {
-            log.info("Usuario autenticado. Redirigiendo de '/login' a '/app'");
-            return "redirect:/app";
+            // log.info("Usuario autenticado. Redirigiendo de '/login' a '/'");
+            return "redirect:/";
         }
 
-        log.info("Usuario no autenticado. Accediendo a la página de login.");
+        // log.info("Usuario no autenticado. Accediendo a la página de login.");
 
         if (error != null) {
-            log.warn("Error de inicio de sesión detectado.");
-            model.addAttribute("errorMessage", "No se pudo iniciar sesión. Verifique sus credenciales.");
+            // log.warn("Error de inicio de sesión detectado.");
+            model.addAttribute("errorMessage", "No se pudo iniciar sesión. Inténtelo mas tarde.");
+        }
+
+        if (badCredentials != null) {
+            // log.warn("Credenciales invalidas.");
+            model.addAttribute("badCredentialsMessage", "El usuario o contraseña es incorrecto.");
         }
 
         if (logout != null) {
-            log.info("Cierre de sesión exitoso detectado.");
+            // log.info("Cierre de sesión exitoso detectado.");
             model.addAttribute("logoutMessage", "Se cerro la sesión correctamente.");
         }
 
