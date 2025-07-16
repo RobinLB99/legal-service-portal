@@ -49,7 +49,7 @@ public class SecurityConfig {
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/assets/**", "/fonts/**", "/css/**", "/js/**").permitAll()
-                        .requestMatchers("/login").anonymous()
+                        .requestMatchers("/login").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login")

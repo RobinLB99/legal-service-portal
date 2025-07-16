@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
     <head th:fragment="head">
-        <title th:text="${titlePage}">Document</title>
+        <title th:text="${titleWindow}">Document</title>
         <!-- [Meta] -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
         <!-- [Favicon] icon -->
         <link rel="icon" href="images/favicon.svg" type="image/x-icon" />
@@ -15,27 +18,27 @@
             rel="stylesheet"
         />
         <!-- [phosphor Icons] https://phosphoricons.com/ -->
-        <link rel="stylesheet" th:href=@{fonts/phosphor/duotone/style.css} />
+        <link rel="stylesheet" th:href="@{fonts/phosphor/duotone/style.css}" />
         <!-- [Tabler Icons] https://tablericons.com -->
-        <link rel="stylesheet" th:href=@{fonts/tabler-icons.min.css} />
+        <link rel="stylesheet" th:href="@{fonts/tabler-icons.min.css}" />
         <!-- [Feather Icons] https://feathericons.com -->
-        <link rel="stylesheet" th:href=@{fonts/feather.css} />
+        <link rel="stylesheet" th:href="@{fonts/feather.css}" />
         <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-        <link rel="stylesheet" th:href=@{fonts/fontawesome.css} />
+        <link rel="stylesheet" th:href="@{fonts/fontawesome.css}" />
         <!-- [Material Icons] https://fonts.google.com/icons -->
-        <link rel="stylesheet" th:href=@{fonts/material.css} />
+        <link rel="stylesheet" th:href="@{fonts/material.css}" />
         <!-- [Template CSS Files] -->
-        <link rel="stylesheet" th:href=@{css/style.css} id="main-style-link" />
+        <link rel="stylesheet" th:href="@{css/style.css}" id="main-style-link" />
     </head>
     <body>
         <div th:fragment="javascript">
-            <script th:src=@{js/plugins/simplebar.min.js}></script>
-            <script th:src=@{js/plugins/popper.min.js}></script>
-            <script th:src=@{js/icon/custom-icon.js}></script>
-            <script th:src=@{js/plugins/feather.min.js}></script>
-            <script th:src=@{js/component.js}></script>
-            <script th:src=@{js/theme.js}></script>
-            <script th:src=@{js/script.js}></script>
+            <script th:src="@{js/plugins/simplebar.min.js}"></script>
+            <script th:src="@{js/plugins/popper.min.js}"></script>
+            <script th:src="@{js/icon/custom-icon.js}"></script>
+            <script th:src="@{js/plugins/feather.min.js}"></script>
+            <script th:src="@{js/component.js}"></script>
+            <script th:src="@{js/theme.js}"></script>
+            <script th:src="@{js/script.js}"></script>
             <div
                 class="floting-button fixed bottom-[50px] right-[30px] z-[1030]"
             ></div>

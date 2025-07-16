@@ -1,0 +1,32 @@
+<h5
+    id="titlePage"
+    class="mb-0 font-medium"
+    hx-swap-oob="true"
+    th:text="${titlePage}"
+>
+    ...
+</h5>
+
+<div id="contenido" class="grid grid-rows-2 grid-cols-2 gap-6">
+    <div
+        class="card m-0 p-4 sm-shadow row-span-1 col-span-2 grid grid-cols-2 gap-4"
+    >
+        <div class="grid place-items-center">
+            <img
+                style="width: 250px; border-radius: 50%"
+                th:src="@{/assets/images/user/avatar-2.jpg}"
+                alt="profile-photo"
+            />
+        </div>
+        <div class="flex flex-col flex-auto">
+            <h3 th:text="|${currentProfile.userData.firstName} ${currentProfile.userData.surnames}|"></h3>
+            <p>
+                <span class="text-black-500" th:text="${currentProfile.credentials.username}"></span>
+                <span th:if="${isAdmin != null}"> - Administrador</span>
+            </p>
+            <input class="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400" type="file" name="foto" id="profilePhotoUploadInput" />
+        </div>
+    </div>
+    <div class="card m-0 p-4 sm-shadow">card 2</div>
+    <div class="card m-0 p-4 sm-shadow">card 3</div>
+</div>

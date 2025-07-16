@@ -69,7 +69,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
                 "profileData",
                 cacheProfile(credentials.get(), user.get()));
 
-        response.sendRedirect("/");
+        response.sendRedirect("/app");
     }
 
 }

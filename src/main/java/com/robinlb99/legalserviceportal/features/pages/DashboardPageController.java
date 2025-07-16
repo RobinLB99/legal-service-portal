@@ -13,16 +13,17 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class DashboardPageController {
 
-    @GetMapping("/")
+    @GetMapping("/app")
     public String goToDashboard(Model model, HttpSession session) {
-        // log.info("Accediendo a la página del dashboard.");
-
-        String titlePage = "App | Portal de Servicio Legal";
-        model.addAttribute("titlePage", titlePage);
-
         ProfileDTO profileData = (ProfileDTO) session.getAttribute("profileData");
+
+        String titleWindow = "App | Portal de Servicio Legal";
+        model.addAttribute("titleWindow", titleWindow);
+
         model.addAttribute("currentProfile", profileData);
 
+        model.addAttribute("titlePage", "Dashboard");
+        
         return "dashboard";
     }
 

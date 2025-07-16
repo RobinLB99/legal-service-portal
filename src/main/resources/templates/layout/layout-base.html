@@ -46,10 +46,8 @@
 
                 <!-- [ Main Content ] start -->
 
-                <div
-                    layout:fragment="content"
-                    class="grid grid-cols-12 gap-x-6"
-                >
+                <div layout:fragment="content" id="content">
+                    <!-- class="grid grid-cols-12 gap-x-6" -->
                     ...
                 </div>
                 <!-- [ Main Content ] end -->
@@ -58,7 +56,7 @@
         <!-- [ Main Content ] end -->
 
         <div th:replace="fragments/common/footer"></div>
-        
+
         <!-- Required Js -->
         <div th:replace="fragments/common/static :: javascript"></div>
         <div

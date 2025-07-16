@@ -9,8 +9,15 @@
     <head> </head>
 
     <body>
-
-        Estoy en el dashboard
-
+        <div layout:fragment="content" id="content">
+            <!-- class="grid grid-cols-12 gap-x-6" -->
+            <p>
+                ¡Bienvenido
+                <span
+                    th:text="${currentProfile.userData.firstName + ' ' + currentProfile.userData.surnames}"
+                ></span
+                >!
+            </p>
+        </div>
     </body>
 </html>

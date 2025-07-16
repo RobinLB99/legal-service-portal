@@ -1,16 +1,16 @@
 <div th:fragment="page-header" class="page-header">
     <div class="page-block">
         <div class="page-header-title">
-            <h5 class="mb-0 font-medium">Sample Page</h5>
+            <h5 id="titlePage" class="mb-0 font-medium" th:text="${titlePage}">...</h5>
         </div>
-        <ul class="breadcrumb">
+        <!-- <ul class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="../dashboard/index.html">Home</a>
+                <a th:href="@{/}">Inicio</a>
             </li>
             <li class="breadcrumb-item">
                 <a href="javascript: void(0)">Other</a>
             </li>
             <li class="breadcrumb-item" aria-current="page">Sample Page</li>
-        </ul>
+        </ul> -->
     </div>
 </div>

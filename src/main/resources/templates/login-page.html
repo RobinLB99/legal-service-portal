@@ -61,29 +61,6 @@
                                             class="mx-auto auth-logo"
                                         />
                                     </a>
-                                    <div
-                                        th:if="${param.error}"
-                                        class="alert alert-danger mt-3"
-                                        role="alert"
-                                    >
-                                        <span th:text="${errorMessage}"></span>
-                                    </div>
-                                    <div
-                                        th:if="${param.badCredentials}"
-                                        class="alert alert-danger mt-3"
-                                        role="alert"
-                                    >
-                                        <span
-                                            th:text="${badCredentialsMessage}"
-                                        ></span>
-                                    </div>
-                                    <div
-                                        th:if="${param.logout}"
-                                        class="alert alert-success mt-3"
-                                        role="alert"
-                                    >
-                                        <span th:text="${logoutMessage}"></span>
-                                    </div>
                                 </div>
                                 <form
                                     th:action="@{/perform_login}"
@@ -92,6 +69,23 @@
                                     <h4 class="text-center font-medium mb-4">
                                         Iniciar Sesión
                                     </h4>
+                                    <div class="text-center mb-3">
+                                        <span
+                                            th:if="${param.error}"
+                                            class="text-red-500"
+                                            th:text="${errorMessage}"
+                                        ></span>
+                                        <span
+                                            th:if="${param.badCredentials}"
+                                            class="text-red-500"
+                                            th:text="${badCredentialsMessage}"
+                                        ></span>
+                                        <span
+                                            th:if="${param.logout}"
+                                            class="text-green-500"
+                                            th:text="${logoutMessage}"
+                                        ></span>
+                                    </div>
                                     <div class="mb-3">
                                         <input
                                             type="text"

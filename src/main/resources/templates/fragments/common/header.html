@@ -50,6 +50,7 @@
             </ul>
         </div>
         <!-- [Mobile Media Block end] -->
+
         <div class="ms-auto">
             <ul
                 class="inline-flex *:min-h-header-height *:inline-flex *:items-center"
@@ -104,7 +105,13 @@
                         <i data-feather="settings"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
-                        <a href="#!" class="dropdown-item">
+                        <a
+                            href="#"
+                            hx-get="/profile/account"
+                            class="dropdown-item"
+                            hx-target="#content"
+                            hx-swap="outerHTML"
+                        >
                             <i class="ti ti-user"></i>
                             <span>My Account</span>
                         </a>
