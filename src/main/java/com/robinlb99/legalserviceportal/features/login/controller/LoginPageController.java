@@ -1,4 +1,4 @@
-package com.robinlb99.legalserviceportal.features.pages;
+package com.robinlb99.legalserviceportal.features.login.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;

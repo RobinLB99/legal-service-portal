@@ -1,12 +1,14 @@
-package com.robinlb99.legalserviceportal.domain.user;
+package com.robinlb99.legalserviceportal.common.util.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.NoRepositoryBean;
 
-@Repository
+import com.robinlb99.legalserviceportal.domain.user.UserEntity;
+
+@NoRepositoryBean
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     @Query("SELECT u FROM UserEntity u WHERE u.idNumber = :identityNumber")

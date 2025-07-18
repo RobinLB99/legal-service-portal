@@ -1,4 +1,4 @@
-package com.robinlb99.legalserviceportal.config.security;
+package com.robinlb99.legalserviceportal.features.auth.service;
 
 import java.util.HashSet;
 import java.util.List;
@@ -14,8 +14,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.robinlb99.legalserviceportal.domain.credential.CredentialEntity;
-import com.robinlb99.legalserviceportal.domain.credential.CredentialRepository;
 import com.robinlb99.legalserviceportal.domain.credential.enums.Permission;
+import com.robinlb99.legalserviceportal.features.auth.repository.CredentialRepository;
 
 import lombok.extern.slf4j.Slf4j;
 

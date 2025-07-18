@@ -1,4 +1,4 @@
-package com.robinlb99.legalserviceportal.features.pages;
+package com.robinlb99.legalserviceportal.features.dashboard.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

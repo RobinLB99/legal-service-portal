@@ -7,13 +7,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Service;
 
+import com.robinlb99.legalserviceportal.common.util.dto.CredentialDTO;
 import com.robinlb99.legalserviceportal.common.util.dto.ProfileDTO;
+import com.robinlb99.legalserviceportal.common.util.dto.UserDTO;
 import com.robinlb99.legalserviceportal.domain.credential.CredentialEntity;
-import com.robinlb99.legalserviceportal.domain.credential.CredentialRepository;
-import com.robinlb99.legalserviceportal.domain.credential.dto.CredentialDTO;
 import com.robinlb99.legalserviceportal.domain.user.UserEntity;
-import com.robinlb99.legalserviceportal.domain.user.UserRepository;
-import com.robinlb99.legalserviceportal.domain.user.dto.UserDTO;
+import com.robinlb99.legalserviceportal.features.auth.repository.CredentialRepository;
+import com.robinlb99.legalserviceportal.features.login.repository.LoginUserRepository;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -35,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     private CredentialRepository credentialRepository;
-    private UserRepository userRepository;
+    private LoginUserRepository loginUserRepository;
 
     /**
      * Construye el manejador de éxito de autenticación con las dependencias
@@ -47,9 +47,9 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
      *                             usuario.
      */
     public CustomAuthenticationSuccessHandler(CredentialRepository credentialRepository,
-            UserRepository userRepository) {
+            LoginUserRepository loginUserRepository) {
         this.credentialRepository = credentialRepository;
-        this.userRepository = userRepository;
+        this.loginUserRepository = loginUserRepository;
     }
 
     /**
@@ -106,7 +106,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         // log.info("Is credentials present?: " + (credentials.isPresent() ? "YES" :
         // "NO"));
 
-        Optional<UserEntity> user = userRepository.findById(
+        Optional<UserEntity> user = loginUserRepository.findById(
                 credentials.get().getUser().getId());
 
         HttpSession session = request.getSession();

@@ -1,4 +1,4 @@
-package com.robinlb99.legalserviceportal.features.pages.fragments;
+package com.robinlb99.legalserviceportal.features.myprofileaccountmanagement.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.robinlb99.legalserviceportal.common.util.dto.ProfileDTO;
-import com.robinlb99.legalserviceportal.domain.credential.dto.AuthoritiesDTO;
+import com.robinlb99.legalserviceportal.domain.credential.Authorities;
 import com.robinlb99.legalserviceportal.domain.credential.enums.Permission;
 import com.robinlb99.legalserviceportal.domain.credential.enums.Role;
 
@@ -25,7 +25,7 @@ public class ProfileAccount {
         ProfileDTO profileData = (ProfileDTO) session.getAttribute("profileData");
         model.addAttribute("currentProfile", profileData);
 
-        AuthoritiesDTO authorities = profileData.getCredentials().getAuthorities();
+        Authorities authorities = profileData.getCredentials().getAuthorities();
         if (authorities.getRol().equals(Role.LAWYER)) {
             boolean isAdmin = authorities.getPermissions().stream()
                     .anyMatch(permission -> permission.equals(Permission.ADMIN));
