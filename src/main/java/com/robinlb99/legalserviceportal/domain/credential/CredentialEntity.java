@@ -6,7 +6,6 @@ import com.robinlb99.legalserviceportal.domain.user.UserEntity;
 
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -50,7 +49,6 @@ public class CredentialEntity implements Serializable {
     private String passwordHash;
 
     @Nonnull
-    @Embedded
     @Column(name = "authorities", nullable = false, columnDefinition = "jsonb")
     @JdbcTypeCode(SqlTypes.JSON)
     private Authorities authorities;
