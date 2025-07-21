@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.robinlb99.legalserviceportal.features.login.service.LoginService;
+
 /**
  * Controlador para manejar las solicitudes relacionadas con la página de inicio
  * de sesión.
@@ -18,33 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginPageController {
 
-    /**
-     * Verifica si un usuario está autenticado.
-     * Este método comprueba el estado de la autenticación y si el usuario no es
-     * anónimo.
-     *
-     * @param authentication Objeto {@link Authentication} que contiene los detalles
-     *                       de la autenticación actual.
-     * @return true si el usuario está autenticado y no es un usuario anónimo, false
-     *         en caso contrario.
-     */
-    private boolean isUserAuthenticated(Authentication authentication) {
-        
-        if (authentication == null) {
-            return false;
-        }
+    private LoginService loginService;
 
-        if (!authentication.isAuthenticated()) {
-            return false;
-        }
-
-        Object principal = authentication.getPrincipal();
-        
-        // Comprueba si el principal es una cadena y si su valor es "anonymousUser",
-        // lo que indica que el usuario no ha iniciado sesión.
-        boolean isAnonymous = principal instanceof String &&
-                "anonymousUser".equals(principal.toString());
-        return !isAnonymous;
+    public LoginPageController(LoginService loginService) {
+        this.loginService = loginService;
     }
 
     /**
@@ -60,7 +39,7 @@ public class LoginPageController {
     public String rootAccess() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         
-        if (isUserAuthenticated(authentication)) {
+        if (loginService.isUserAuthenticated(authentication)) {
             return "redirect:/app";
         }
 
@@ -91,7 +70,7 @@ public class LoginPageController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (isUserAuthenticated(authentication)) {
+        if (loginService.isUserAuthenticated(authentication)) {
             return "redirect:/app";
         }
 
